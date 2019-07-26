@@ -13,11 +13,12 @@ export default function CharacterList() {
     .catch(error => console.log(error))
   }, [])
 
+  console.log(data)
   return <section className='character-list grid-view'>
     { data.map((char,index) => <CharacterCard
              key={index}
              name={char.name}
-             gender={char.gender}
+             origin={char.origin.name}
              img={char.image}
              loc={char.location.name}
              spec={char.species}

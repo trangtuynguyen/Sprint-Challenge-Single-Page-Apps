@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components';
 import axios from "axios";
+import 'semantic-ui-css/semantic.min.css'
+import { Card, Icon, Image } from 'semantic-ui-react'
 
 
-export default function CharacterCard ({ name, eps, gender, img, loc, spec, status }) {
+export default function CharacterCard ({ name, origin, gender, img, loc, spec, status }) {
   
   const CardDiv = styled.div`
     width: 50%;
@@ -14,13 +16,23 @@ export default function CharacterCard ({ name, eps, gender, img, loc, spec, stat
   return (
 
     <CardDiv>
-      <h1>{name}</h1>
-      <h1>{eps}</h1>
-      <h1>{gender}</h1>
-      <img src={img}/>
-      <h1>{loc}</h1>
-      <h1>{spec}</h1>
-      <h1>{status}</h1>
+     <Card>
+    <Image src={img} wrapped ui={false} />
+    <Card.Content>
+      <Card.Header>{name}</Card.Header>
+      <Card.Meta>{spec} {status}</Card.Meta>
+      <Card.Description>
+        Location: {loc} <br/>
+        Origin: {origin}
+      </Card.Description>
+    </Card.Content>
+    <Card.Content extra>
+      <a>
+        <Icon name='user' />
+        Episodes
+      </a>
+    </Card.Content>
+  </Card>
     </CardDiv>
   
   )
